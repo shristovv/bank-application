@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Add Account</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Add Account Form</h1>
+<form action="#" th:action="@{/accounts/add}" th:object="${account}" method="post">
+  <p>Id: <input type="text" th:field="*{id}" /></p>
+  <p>Account Number: <input type="text" th:field="*{accountNumber}" /></p>
+  <p>Bank: <input type="text" th:field="*{bank}" /></p>
+  <p>Owner: <input type="text" th:field="*{owner}" /></p>
+  <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
