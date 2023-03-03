@@ -1,14 +1,28 @@
 package com.cargarantie.springboot.basics.service;
 
 import com.cargarantie.springboot.basics.jpa.model.Account;
+import com.cargarantie.springboot.basics.jpa.repository.AccountRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface AccountService {
+public class AccountService {
 
-  Account findAccountByAccountNumber(Account account);
+  private final AccountRepository accountRepository;
 
-  void addAccount(Account account);
+  public AccountService(AccountRepository accountRepository) {
+    this.accountRepository = accountRepository;
+  }
 
-  Iterable<Account> getAccounts();
+  public Account findAccountByAccountNumber(Account account) {
+    return accountRepository.findAccountByAccountNumber(account.getAccountNumber());
+  }
+
+  public void addAccount(Account account) {
+    accountRepository.save(account);
+  }
+
+  public List<Account> getAccounts() {
+    return accountRepository.findAll();
+  }
 }
